@@ -8,15 +8,17 @@ import androidx.compose.runtime.Composable
 
 val DarkColorScheme = darkColorScheme(
     primary = ThemeColors.Night.primary,
+    secondary = ThemeColors.Night.secondary,
     onPrimary = ThemeColors.Night.text,
-    surface = ThemeColors.Night.surface,
+    onSecondary = ThemeColors.Night.button,
     background = ThemeColors.Night.background
 )
 
 val LightColorScheme = lightColorScheme(
     primary = ThemeColors.Day.primary,
+    secondary = ThemeColors.Day.secondary,
     onPrimary = ThemeColors.Day.text,
-    surface = ThemeColors.Day.surface,
+    onSecondary = ThemeColors.Day.button,
     background = ThemeColors.Day.background
 )
 
@@ -30,7 +32,6 @@ fun AppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable ()
 
     MaterialTheme(
         colorScheme = colors,
-        typography = Typography,
         content = content
     )
 }

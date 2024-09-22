@@ -14,6 +14,5 @@ val provider = GoogleFont.Provider(
 val NunitoFont = GoogleFont(name = "Nunito")
 
 val NunitoFontFamily = FontFamily(
-    Font(googleFont = NunitoFont, fontProvider = provider),
-
+    Font(googleFont = NunitoFont, fontProvider = provider)
 )

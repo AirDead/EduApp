@@ -4,16 +4,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import dev.airdead.eduapp.R
 
 @Composable
 fun LoadingScreen() {
@@ -24,12 +20,7 @@ fun LoadingScreen() {
     ) {
         Spacer(modifier = Modifier.weight(1.3f))
 
-        Icon(
-            painter = painterResource(R.drawable.icon),
-            contentDescription = "Icon",
-            tint = Color(255, 255, 255),
-            modifier = Modifier.size(110.dp)
-        )
+        AppIcon()
 
         Spacer(modifier = Modifier.weight(0.1f))
 

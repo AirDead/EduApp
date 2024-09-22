@@ -24,12 +24,13 @@ fun ActionButton(
     backgroundColor: Color,
     textColor: Color,
     borderColor: Color = backgroundColor,
+    height: Int = 60,
     onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth(0.9f)
-            .height(60.dp)
+            .height(height.dp)
             .clip(RoundedCornerShape(12.dp))
             .background(backgroundColor)
             .border(
