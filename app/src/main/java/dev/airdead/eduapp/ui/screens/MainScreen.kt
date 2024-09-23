@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import dev.airdead.eduapp.ext.appTheme
 import dev.airdead.eduapp.ui.elements.ActionButton
+import dev.airdead.eduapp.ui.elements.AppIcon
 import dev.airdead.eduapp.ui.theme.NunitoFontFamily
 
 @Composable

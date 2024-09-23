@@ -13,13 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import dev.airdead.eduapp.ext.OutlineColors
 import dev.airdead.eduapp.ext.appTheme
 
-
 @Composable
-fun InputField(value: String, placeholder: String, onValueChange: (String) -> Unit) {
+fun InputField(value: String, placeholder: String, onValueChange: (String) -> Unit, isPassword: Boolean = false) {
     Box(
         modifier = Modifier
             .fillMaxWidth(0.9f)
@@ -42,7 +43,8 @@ fun InputField(value: String, placeholder: String, onValueChange: (String) -> Un
                 .fillMaxSize(),
             shape = RoundedCornerShape(12.dp),
             singleLine = true,
-            colors = OutlineColors
+            colors = OutlineColors,
+            visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None
         )
     }
 }

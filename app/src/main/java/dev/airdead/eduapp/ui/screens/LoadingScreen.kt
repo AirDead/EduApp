@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import dev.airdead.eduapp.ui.elements.AppIcon
 
 @Composable
 fun LoadingScreen() {
@@ -28,7 +29,6 @@ fun LoadingScreen() {
             color = Color(250, 250, 250),
             strokeWidth = 4.dp
         )
-
 
         Spacer(modifier = Modifier.weight(1.6f))
     }

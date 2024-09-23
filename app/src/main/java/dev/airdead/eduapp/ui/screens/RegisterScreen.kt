@@ -20,43 +20,45 @@ import dev.airdead.eduapp.ui.elements.AppIcon
 import dev.airdead.eduapp.ui.elements.AuthBox
 
 @Composable
-fun LoginScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
+fun RegisterScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
+    var nickname by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var loginError by remember { mutableStateOf(false) }
+    var registerError by remember { mutableStateOf(false) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        Spacer(modifier = Modifier.weight(1.7f))
+        Spacer(modifier = Modifier.weight(0.6f))
 
         AppIcon()
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(0.6f))
 
         AuthBox(
-            title = "Login to your account",
-            onContinueClick = { _, emailInput, passwordInput ->
+            title = "Register a new account",
+            showNicknameField = true,
+            onContinueClick = { nicknameInput, emailInput, passwordInput ->
                 if (passwordInput != null) {
-                    authViewModel.loginUser(emailInput, passwordInput) { isSuccess ->
+                    authViewModel.registerUser(nicknameInput, emailInput, passwordInput) { isSuccess ->
                         if (isSuccess) {
-                            navController.navigateWithLoading("main", 1)
+                            navController.navigateWithLoading("login", 1)
                         } else {
-                            loginError = true // Покажем ошибку
+                            registerError = true
                         }
                     }
                 }
             },
-            bottomText = "Don't have an account? ",
-            bottomActionText = "Register",
+            bottomText = "Already have an account? ",
+            bottomActionText = "Login",
             onBottomActionClick = {
-                navController.navigateWithLoading("register", 1)
+                navController.navigateWithLoading("login", 1)
             }
         )
 
-        if (loginError) {
-            Text("Login failed. Please try again.", color = Color.Red)
+        if (registerError) {
+            Text("Registration failed. Please try again.", color = Color.Red)
         }
     }
 }
