@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +32,7 @@ import dev.airdead.eduapp.ui.theme.NunitoFontFamily
 @Composable
 fun AuthBox(
     title: String,
+    height: Int = 400,
     showNicknameField: Boolean = false,
     onContinueClick: (String, String, String?) -> Unit,
     bottomText: String,
@@ -40,18 +42,19 @@ fun AuthBox(
     var nickname by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var showErrorDialog by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
             .background(appTheme.secondary)
             .fillMaxWidth()
-            .height(470.dp)
+            .height(height.dp)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(top = 60.dp)
+                .padding(top = 40.dp)
                 .fillMaxSize()
         ) {
             Text(
@@ -91,7 +94,12 @@ fun AuthBox(
                 textColor = Color.White,
                 height = 50,
                 onClick = {
-                    onContinueClick(email, password, if (showNicknameField) nickname else null)
+                    // Проверяем, если одно из полей пустое, показываем ошибку
+                    if (email.isEmpty() || password.isEmpty() || (showNicknameField && nickname.isEmpty())) {
+                        showErrorDialog = true
+                    } else {
+                        onContinueClick(email, password, if (showNicknameField) nickname else null)
+                    }
                 }
             )
 
@@ -117,6 +125,45 @@ fun AuthBox(
             }
 
             Spacer(modifier = Modifier.weight(1.0f))
+        }
+
+        if (showErrorDialog) {
+            AlertDialog(
+                onDismissRequest = { showErrorDialog = false },
+                title = {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Error",
+                            color = appTheme.onPrimary,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 24.sp,
+                            fontFamily = NunitoFontFamily
+                        )
+                    }
+                },
+                text = {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Wrong data in fields",
+                            color = appTheme.onPrimary,
+                            fontSize = 20.sp,
+                            fontFamily = NunitoFontFamily
+                        )
+                    }
+                },
+                confirmButton = {},
+                containerColor = Color(208, 61, 61),
+                modifier = Modifier
+                    .height(150.dp)
+                    .fillMaxWidth()
+                    .clickable { showErrorDialog = false }
+            )
         }
     }
 }
