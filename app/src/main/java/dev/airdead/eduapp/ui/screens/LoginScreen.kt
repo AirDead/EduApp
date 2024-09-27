@@ -6,13 +6,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import dev.airdead.eduapp.ext.navigateWithLoading
+import dev.airdead.eduapp.navigator.NavService
 import dev.airdead.eduapp.ui.elements.AppIcon
 import dev.airdead.eduapp.ui.elements.AuthBox
+import org.koin.compose.koinInject
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen() {
+    val navigator = koinInject<NavService>()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -26,16 +27,15 @@ fun LoginScreen(navController: NavController) {
 
         AuthBox(
             title = "Login to your account",
-            height = 340,
-            onContinueClick = { _, emailInput, passwordInput ->
-                if (passwordInput != null) {
-                    navController.navigateWithLoading("main", 1)
-                }
+            height = 370,
+            onContinueClick = { emailInput, passwordInput, _ ->
+                // TODO: Implement login logic
+                navigator.navigateWithAnimation("classSelector", 1)
             },
             bottomText = "Don't have an account? ",
             bottomActionText = "Register",
             onBottomActionClick = {
-                navController.navigateWithLoading("register", 1)
+                navigator.navigateWithAnimation("register", 1)
             }
         )
     }

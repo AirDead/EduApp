@@ -94,7 +94,6 @@ fun AuthBox(
                 textColor = Color.White,
                 height = 50,
                 onClick = {
-                    // Проверяем, если одно из полей пустое, показываем ошибку
                     if (email.isEmpty() || password.isEmpty() || (showNicknameField && nickname.isEmpty())) {
                         showErrorDialog = true
                     } else {
@@ -131,39 +130,27 @@ fun AuthBox(
             AlertDialog(
                 onDismissRequest = { showErrorDialog = false },
                 title = {
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Error",
-                            color = appTheme.onPrimary,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 24.sp,
-                            fontFamily = NunitoFontFamily
-                        )
-                    }
+                    Text(
+                        text = "Error",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp,
+                        fontFamily = NunitoFontFamily
+                    )
                 },
                 text = {
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Wrong data in fields",
-                            color = appTheme.onPrimary,
-                            fontSize = 20.sp,
-                            fontFamily = NunitoFontFamily
-                        )
-                    }
+                    Text(
+                        text = "Please fill all fields",
+                        color = Color.White,
+                        fontSize = 18.sp,
+                        fontFamily = NunitoFontFamily
+                    )
                 },
-                confirmButton = {},
                 containerColor = Color(208, 61, 61),
-                modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxWidth()
-                    .clickable { showErrorDialog = false }
+                confirmButton = {}
             )
         }
+
     }
 }
+

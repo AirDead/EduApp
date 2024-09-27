@@ -11,12 +11,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import dev.airdead.eduapp.ext.appTheme
+import dev.airdead.eduapp.navigator.NavService
 import dev.airdead.eduapp.ui.elements.ActionButton
 import dev.airdead.eduapp.ui.elements.AppIcon
 import dev.airdead.eduapp.ui.theme.NunitoFontFamily
+import org.koin.compose.koinInject
 
 @Composable
-fun MainScreen(onLogin: () -> Unit, onRegister: () -> Unit) {
+fun MainScreen() {
+
+    val navigator = koinInject<NavService>()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
@@ -40,7 +45,9 @@ fun MainScreen(onLogin: () -> Unit, onRegister: () -> Unit) {
             backgroundColor = Color.Transparent,
             borderColor = Color.White,
             textColor = Color.White,
-            onClick = onLogin
+            onClick = {
+                navigator.navigateTo("login")
+            }
         )
 
         Spacer(modifier = Modifier.weight(0.1f))
@@ -49,11 +56,11 @@ fun MainScreen(onLogin: () -> Unit, onRegister: () -> Unit) {
             text = "Register",
             backgroundColor = appTheme.primary,
             textColor = appTheme.onPrimary,
-            onClick = onRegister
+            onClick = {
+                navigator.navigateTo("register")
+            }
         )
 
         Spacer(modifier = Modifier.weight(0.6f))
     }
 }
-
-
