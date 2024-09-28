@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ext
+package dev.airdead.eduapp.app.ext
 
 import android.util.Log
 

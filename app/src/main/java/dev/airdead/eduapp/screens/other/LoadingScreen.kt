@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.screens
+package dev.airdead.eduapp.screens.other
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.airdead.eduapp.ui.elements.AppIcon
+import dev.airdead.eduapp.app.elements.AppIcon
 
 @Composable
 fun LoadingScreen() {

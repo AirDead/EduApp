@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.screens
+package dev.airdead.eduapp.screens.auth
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -6,15 +6,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import dev.airdead.eduapp.navigator.NavService
-import dev.airdead.eduapp.ui.elements.AppIcon
-import dev.airdead.eduapp.ui.elements.AuthBox
+import dev.airdead.eduapp.app.elements.AppIcon
+import dev.airdead.eduapp.app.elements.AuthBox
+import dev.airdead.eduapp.modules.navigator.NavService
+import dev.airdead.eduapp.modules.userstorage.UserData
+import dev.airdead.eduapp.modules.userstorage.models.User
 import org.koin.compose.koinInject
 
 @Composable
 fun RegisterScreen() {
 
     val navigator = koinInject<NavService>()
+    val appUser = koinInject<UserData>()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -33,13 +36,16 @@ fun RegisterScreen() {
             onContinueClick = { nicknameInput, emailInput, passwordInput ->
                 if (passwordInput != null) {
                     // TODO: Implement login logic
-                    navigator.navigateWithAnimation("classSelector", 1)
+
+                    appUser.login(User(nicknameInput, nicknameInput))
+
+                    navigator.animateNavigate("classSelector", "login", 1)
                 }
             },
             bottomText = "Already have an account? ",
             bottomActionText = "Login",
             onBottomActionClick = {
-                navigator.navigateWithAnimation("login", 1)
+                navigator.animateNavigate("login", 1)
             }
         )
     }

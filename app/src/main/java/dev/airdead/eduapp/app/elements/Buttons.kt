@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.elements
+package dev.airdead.eduapp.app.elements
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.airdead.eduapp.ui.theme.NunitoFontFamily
+import dev.airdead.eduapp.app.theme.NunitoFontFamily
 
 @Composable
 fun ActionButton(

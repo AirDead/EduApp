@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.elements
+package dev.airdead.eduapp.app.elements
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -16,8 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import dev.airdead.eduapp.ext.OutlineColors
-import dev.airdead.eduapp.ext.appTheme
+import dev.airdead.eduapp.app.ext.OutlineColors
+import dev.airdead.eduapp.app.ext.appTheme
 
 @Composable
 fun InputField(value: String, placeholder: String, onValueChange: (String) -> Unit, isPassword: Boolean = false) {

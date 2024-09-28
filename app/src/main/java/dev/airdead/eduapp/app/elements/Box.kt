@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.elements
+package dev.airdead.eduapp.app.elements
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,8 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.airdead.eduapp.ext.appTheme
-import dev.airdead.eduapp.ui.theme.NunitoFontFamily
+import dev.airdead.eduapp.app.ext.appTheme
+import dev.airdead.eduapp.app.theme.NunitoFontFamily
 
 @Composable
 fun AuthBox(
@@ -46,16 +46,16 @@ fun AuthBox(
 
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
-            .background(appTheme.secondary)
             .fillMaxWidth()
             .height(height.dp)
+            .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+            .background(appTheme.secondary)
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(top = 40.dp)
                 .fillMaxSize()
+                .padding(top = 40.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = title,
@@ -86,7 +86,7 @@ fun AuthBox(
                 isPassword = true
             )
 
-            Spacer(modifier = Modifier.weight(0.1f))
+            Spacer(modifier = Modifier.height(16.dp))
 
             ActionButton(
                 text = "Continue",
@@ -102,7 +102,7 @@ fun AuthBox(
                 }
             )
 
-            Spacer(modifier = Modifier.weight(0.1f))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Row {
                 Text(
@@ -123,7 +123,7 @@ fun AuthBox(
                 )
             }
 
-            Spacer(modifier = Modifier.weight(1.0f))
+            Spacer(modifier = Modifier.weight(1f))
         }
 
         if (showErrorDialog) {
@@ -150,7 +150,5 @@ fun AuthBox(
                 confirmButton = {}
             )
         }
-
     }
 }
-

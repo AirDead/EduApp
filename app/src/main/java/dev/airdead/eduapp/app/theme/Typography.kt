@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.theme
+package dev.airdead.eduapp.app.theme
 
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.googlefonts.Font

@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.elements
+package dev.airdead.eduapp.app.elements
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon

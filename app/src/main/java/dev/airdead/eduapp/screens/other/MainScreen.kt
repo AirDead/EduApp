@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.screens
+package dev.airdead.eduapp.screens.other
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,11 +10,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import dev.airdead.eduapp.ext.appTheme
-import dev.airdead.eduapp.navigator.NavService
-import dev.airdead.eduapp.ui.elements.ActionButton
-import dev.airdead.eduapp.ui.elements.AppIcon
-import dev.airdead.eduapp.ui.theme.NunitoFontFamily
+import dev.airdead.eduapp.app.elements.ActionButton
+import dev.airdead.eduapp.app.elements.AppIcon
+import dev.airdead.eduapp.app.ext.appTheme
+import dev.airdead.eduapp.app.theme.NunitoFontFamily
+import dev.airdead.eduapp.modules.navigator.NavService
 import org.koin.compose.koinInject
 
 @Composable
@@ -46,7 +46,7 @@ fun MainScreen() {
             borderColor = Color.White,
             textColor = Color.White,
             onClick = {
-                navigator.navigateTo("login")
+                navigator.navigate("login")
             }
         )
 
@@ -57,7 +57,7 @@ fun MainScreen() {
             backgroundColor = appTheme.primary,
             textColor = appTheme.onPrimary,
             onClick = {
-                navigator.navigateTo("register")
+                navigator.navigate("register")
             }
         )
 

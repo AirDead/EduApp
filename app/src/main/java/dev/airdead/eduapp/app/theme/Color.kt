@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.theme
+package dev.airdead.eduapp.app.theme
 
 import androidx.compose.ui.graphics.Color
 

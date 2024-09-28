@@ -1,4 +1,4 @@
-package dev.airdead.eduapp.ui.theme
+package dev.airdead.eduapp.app.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
